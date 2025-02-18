@@ -16,6 +16,8 @@ spec:
       containers:
       - name: preschool
         image: 654654361479.dkr.ecr.us-east-1.amazonaws.com/preschool:latest
+        imagePullPolicy: Always
+
         resources:
           requests:
             memory: "64Mi"
@@ -23,6 +25,8 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+      imagePullSecrets:
+      - name: mycred
         ports:
         - containerPort: 80
 ---
@@ -37,4 +41,5 @@ spec:
   - port: 80
     targetPort: 80
   type: LoadBalancer
+
 
